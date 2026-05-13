@@ -7,7 +7,7 @@ Bash script for sequential analysis of NIfTI images with ITK-SNAP. This script w
 To install, clone this repository and run this command:
 
 ```sh
-git clone
+git clone https://github.com/art2mri/sequential-image-analyzer.git
 cd sequential-image-analyzer
 make install  # Install to /usr/local/bin by default.
 ```
@@ -34,7 +34,7 @@ sequential-image-analyzer --images-dir /data/PPMI --first-one
 
 ### How to structure the parent directory
 
-Each immediate subdirectory represents a single subject or session; the script treats each subdirectory as a unit and opens the NIfTI files it contains before moving to the next subdirectory. Files are processed in a single alphabetical order (mixing .nii and .nii.gz), files located directly in the parent directory are ignored, and the script does not recurse into nested folders.
+Each immediate subdirectory represents a single subject or session; the script treats each subdirectory as a unit and opens the NIfTI files it contains before moving to the next subdirectory.
 
 Use this example to structure your parent directory:
 
