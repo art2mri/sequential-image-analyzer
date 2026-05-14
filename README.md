@@ -1,22 +1,41 @@
 # sequential-image-analyzer
 
-Bash script for sequential analysis of NIfTI images with ITK-SNAP. This script waits for ITK-SNAP to close before opening the next image, allowing a manual inspection.
+A lightweight Bash utility for manual image inspection: it scans immediate subdirectories, open each NIfTI image in ITK-SNAP, and blocks until the viewer closes so you can review images one-by-one.
 
-### How to install and use
+### Installation
 
-To install, clone this repository and run this command:
+To install, clone this repository and install the script to your system `bin`:
 
 ```sh
 git clone https://github.com/art2mri/sequential-image-analyzer.git
-cd sequential-image-analyzer
-make install  # Install to /usr/local/bin by default.
+cp sequential-image-analyzer
+sudo make install  # Installs bin/sequential-image-analyzer to /usr/loca/bin by default.
 ```
 
-This software allows this **flags**:
+#### Command line flags
+
 - `--images-dir PATH`: required, parent directory with the subdirectories containing NIfTI images.
 - `--start-id NAME`: optional, skip subdirectories until one with basename NAME is found, then start processing.
 - `--first-one`: optional, open only the frist matching image in each subdirectory.
-- `--help, -h`: show help.
+- `--help, -h`: show usage.
+
+#### How to verify the installation
+
+You can check if this software was installed correctly with this command:
+
+```sh
+make verify
+```
+
+Also, run the help to confirm the script executes:
+
+```sh
+sequential-image-analyzer --help
+```
+
+#### How to uninstall
+
+Just run `make uninstall` to remove the installed binary.
 
 ### Examples
 
@@ -29,7 +48,6 @@ sequential-image-analyzer --images-dir /data/PPMI --start-id subject_042
 
 # open only the first image in each subdirectory
 sequential-image-analyzer --images-dir /data/PPMI --first-one
-
 ```
 
 ### How to structure the parent directory
@@ -54,6 +72,7 @@ This software processes `subject_001`, `subject_002`, `subject_003` in alphabeti
 
 ### Dependencies
 
-- **Bash (GNU Bash)**: run with bash or ensure shebang `#1/usr/bin/env bash` is used.
-- **ITK-SNAP**: must be available in `PATH` or accessible via a wrapper/symlink.
+- **sudo**: required to install the package.
+- **bash (GNU Bash)**: run with bash or ensure shebang `#1/usr/bin/env bash` is used.
 - **make**: required to use the provided Makefile targets.
+- **ITK-SNAP**: must be available in `PATH` or accessible via a wrapper/symlink.
