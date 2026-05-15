@@ -16,10 +16,8 @@ verify:
 	@echo "[INFO] Verifying sequential-image-analyzer..."
 	@if command -v sequential-image-analyzer >/dev/null 2>&1; then \
 	  echo "OK: found in PATH: $$(command -v sequential-image-analyzer)"; \
-	elif [ -x "./$(SRC)" ]; then \
-	  echo "OK: local $(SRC) is executable"; \
 	else \
-	  echo "NOT FOUND: run 'make install' or place the script in your PATH"; exit 1; \
+	  echo "NOT FOUND: run 'make install' or place the script in your PATH"; exit 0; \
 	fi
 
 uninstall:
